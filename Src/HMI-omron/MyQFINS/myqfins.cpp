@@ -31,6 +31,7 @@ void MyQFINS::writeData( QString addr, u16 value)
 
 void MyQFINS::readed( QString addr, QList<u16> data)
 {
+    qDebug() << Q_FUNC_INFO << addr << data ;
     emit updateVAR(addr, data);
 }
 

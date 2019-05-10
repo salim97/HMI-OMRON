@@ -8,6 +8,7 @@ MyOMRON::MyOMRON(QString ip, QObject *parent) : QObject(parent)
 
 void MyOMRON::readed( QString addr, QList<u16> data)
 {
+    qDebug() << Q_FUNC_INFO << addr << data ;
     if( addr == "D1")
         d1(data.first());
 }
