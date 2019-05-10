@@ -16,7 +16,7 @@ MyQFINS::MyQFINS(QString IP, QObject *parent) : QObject(parent)
     QObject::connect( plc1RestartTimer, SIGNAL(timeout()), this, SLOT(plc1Restart()));
 
     connect(plc1Proxy, SIGNAL(readed(QString,QList<u16>)), this, SLOT(readed(QString,QList<u16>)));
-    QTimer *timer1;
+
     timer1 = new QTimer(this);
     timer1->setInterval(1000);
     timer1->setSingleShot(false);

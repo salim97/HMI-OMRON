@@ -35,6 +35,7 @@ private:
     PlcWidgetEventHandler   widget1EventHandler; //widgets to proxy
 
     QTimer *plc1RestartTimer;
+    QTimer *timer1;
 };
 
 #endif // MYQFINS_H
