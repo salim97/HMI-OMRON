@@ -18,6 +18,7 @@ public:
 public slots:
     void writeData(QString addr, u16 value);
     void readed(QString addr, QList<u16> data);
+    void timeout();
 signals:
     void updateVAR(QString addr, QList<u16> data);
 

@@ -16,6 +16,14 @@ MyQFINS::MyQFINS(QString IP, QObject *parent) : QObject(parent)
     QObject::connect( plc1RestartTimer, SIGNAL(timeout()), this, SLOT(plc1Restart()));
 
     connect(plc1Proxy, SIGNAL(readed(QString,QList<u16>)), this, SLOT(readed(QString,QList<u16>)));
+    QTimer *timer1;
+    timer1 = new QTimer(this);
+    timer1->setInterval(1000);
+    timer1->setSingleShot(false);
+    QObject::connect( timer1, SIGNAL(timeout()), this, SLOT(timeout()));
+
+    timer1->start();
+
 }
 
 MyQFINS::~MyQFINS()
@@ -129,6 +137,11 @@ void MyQFINS::plc1Restart()
     plc1RestartTimer->stop();
     plc1Proxy->stopProxy();
     startPlc1Comm();
+
+}
+
+void MyQFINS::timeout()
+{
     bool ok = false ;
     QList<u16> a ;
     a << plc1Proxy->readProxyData("D1", &ok) ;
