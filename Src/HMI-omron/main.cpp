@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
 
-    MyOMRON myOMRON("X.X.X.X");
+    MyOMRON myOMRON("192.168.5.194");
     engine.rootContext()->setContextProperty("myOMRON", &myOMRON);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

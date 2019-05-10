@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 
-#define PLC_IP_1 "localhost"
+#define PLC_IP_1 "192.168.5.194"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
