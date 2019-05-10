@@ -36,9 +36,10 @@ void MyQFINS::startPlc1Comm()
         //plcProxy->disableWrite();
 
         //Main PLC
-        plc1Proxy->addRegion("H0",100,200);
-        plc1Proxy->addRegion("H100",100,200);
-        plc1Proxy->addRegion("D10000",100,1000);
+        // TODO : hadi pour sacni un region avec interval du temp
+        //plc1Proxy->addRegion("H0",100,200);
+        //plc1Proxy->addRegion("H100",100,200);
+        //plc1Proxy->addRegion("D10000",100,1000);
 
         //read all values from PLC
         plc1Proxy->startProxy( true); //force notify - init whole gui
