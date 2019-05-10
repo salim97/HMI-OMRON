@@ -18,6 +18,7 @@ public:
 signals:
 
 public slots:
+        void readed(QString addr, QList<u16> data);
 
 private:
     MyQFINS *myQFINS;

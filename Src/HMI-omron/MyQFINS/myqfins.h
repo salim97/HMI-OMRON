@@ -17,11 +17,15 @@ public:
     void initPlc1WidgetsStructure();
 public slots:
     void writeData(QString addr, u16 value);
+    void readed(QString addr, QList<u16> data);
+signals:
+    void updateVAR(QString addr, QList<u16> data);
+
 private slots:
     void plc1ProxyError(PlcProxy::EplcProxyError error);
     void plc1Restart();
 
-signals:
+
 
 private:
     //PLC

@@ -15,6 +15,7 @@ MyQFINS::MyQFINS(QString IP, QObject *parent) : QObject(parent)
     plc1RestartTimer->setInterval( 3000);
     QObject::connect( plc1RestartTimer, SIGNAL(timeout()), this, SLOT(plc1Restart()));
 
+    connect(plc1Proxy, SIGNAL(readed(QString,QList<u16>)), this, SLOT(readed(QString,QList<u16>)));
 }
 
 MyQFINS::~MyQFINS()
@@ -28,6 +29,14 @@ void MyQFINS::writeData( QString addr, u16 value)
     plc1Proxy->writeData(addr, value);
 }
 
+void MyQFINS::readed( QString addr, QList<u16> data)
+{
+    emit updateVAR(addr, data);
+}
+
+
+
+
 void MyQFINS::startPlc1Comm()
 {
     if( plc1Proxy) {
@@ -39,7 +48,7 @@ void MyQFINS::startPlc1Comm()
         // TODO : hadi pour sacni un region avec interval du temp
         //plc1Proxy->addRegion("H0",100,200);
         //plc1Proxy->addRegion("H100",100,200);
-        //plc1Proxy->addRegion("D10000",100,1000);
+        plc1Proxy->addRegion("D10000",100,1000);
 
         //read all values from PLC
         plc1Proxy->startProxy( true); //force notify - init whole gui
