@@ -7,11 +7,19 @@ Window {
     width: 640
     height: 480
     title: qsTr("Hello World")
+    Connections{
+        target: myOMRON
+
+        onD1Changed:{
+            spinbox.value = myOMRON.d1
+        }
+    }
 
     Item {
         anchors.fill: parent
 
         SpinBox{
+            id: spinbox
             anchors.centerIn: parent
             from: 0
             to: 999
