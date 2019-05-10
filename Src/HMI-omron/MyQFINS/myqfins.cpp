@@ -49,13 +49,14 @@ void MyQFINS::startPlc1Comm()
         // TODO : hadi pour sacni un region avec interval du temp
         //plc1Proxy->addRegion("H0",100,200);
         //plc1Proxy->addRegion("H100",100,200);
-        plc1Proxy->addRegion("D1",100,500);
+        plc1Proxy->addRegion("D0",100,500);
 
         //read all values from PLC
         plc1Proxy->startProxy( true); //force notify - init whole gui
         plc1Proxy->stopProxy();
         plc1Proxy->startProxy();
         plc1Proxy->enableWrite();
+
 
     } else {
         qCritical() << "PLC proxy object not found ..";
@@ -128,5 +129,10 @@ void MyQFINS::plc1Restart()
     plc1RestartTimer->stop();
     plc1Proxy->stopProxy();
     startPlc1Comm();
+    bool ok = false ;
+    QList<u16> a ;
+    a << plc1Proxy->readProxyData("D1", &ok) ;
+    emit updateVAR("D1", a);
+    qDebug() << Q_FUNC_INFO << a  << ok ;
 }
 
