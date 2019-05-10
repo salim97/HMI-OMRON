@@ -29,8 +29,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
-INCLUDEPATH += $$PWD/plcQlib
-include(plcQlib/plcQlib.pri)
+
+INCLUDEPATH += $$PWD/MyQFINS
+include(MyQFINS/MyQFINS.pri)
 
 FORMS += \
     mainwindow.ui

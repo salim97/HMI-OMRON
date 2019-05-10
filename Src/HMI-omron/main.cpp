@@ -1,19 +1,25 @@
 #include <QGuiApplication>
 #include <QApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include <mainwindow.h>
+#include "myomron.h"
 
 int main(int argc, char *argv[])
 {
-    //QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication app(argc, argv);
 
-    MainWindow mainwindow ;
-    mainwindow.show();
-    return app.exec();
+//   MainWindow mainwindow ;
+//    mainwindow.show();
     /*-------------*/
     QQmlApplicationEngine engine;
+
+
+    MyOMRON myOMRON("X.X.X.X");
+    engine.rootContext()->setContextProperty("myOMRON", &myOMRON);
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

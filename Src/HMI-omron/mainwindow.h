@@ -17,11 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void startPlc1Comm();
-    void initPlc1WidgetsStructure();
-private slots:
-    void plc1ProxyError(PlcProxy::EplcProxyError error);
-    void plc1Restart();
+
 private:
     Ui::MainWindow *ui;
 
