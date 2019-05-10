@@ -13,6 +13,7 @@ public:
     explicit MyOMRON(QString ip, QObject *parent = nullptr);
 
     ZONE_MEMOIRE("D1", d1)
+    ZONE_MEMOIRE("H2.00", h200)
 
 
 signals:
