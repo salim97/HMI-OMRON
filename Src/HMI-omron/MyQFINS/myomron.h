@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QTimer>
-#include "myqfins.h"
+#include "plcqlib.h"
 #include "mypropertyhelper.h"
 
 class MyOMRON : public QObject
@@ -11,18 +11,24 @@ class MyOMRON : public QObject
     Q_OBJECT
 public:
     explicit MyOMRON(QString ip, QObject *parent = nullptr);
+    ~MyOMRON();
 
     ZONE_MEMOIRE("D1", d1)
     ZONE_MEMOIRE("H2.00", h200)
 
 
+
+    void startPlc1Comm();
 signals:
 
 public slots:
-        void readed(QString addr, QList<u16> data);
 
+private slots:
+        void plc1ProxyError(PlcProxy::EplcProxyError error);
+        void plc1Restart();
 private:
-    MyQFINS *myQFINS;
+     PlcProxy                *plc1Proxy;
+     QTimer *plc1RestartTimer;
 };
 
 #endif // MYOMRON_H

@@ -2,34 +2,13 @@
 
 MyQFINS::MyQFINS(QString IP, QObject *parent) : QObject(parent)
 {
-    plc1Proxy = new PlcProxy(IP);
-
-    //register for read errors from proxy
-    QObject::connect( plc1Proxy, SIGNAL(error(PlcProxy::EplcProxyError)), this, SLOT(plc1ProxyError(PlcProxy::EplcProxyError)));
-
-    //initPlc1WidgetsStructure(); //setup notifiers
-    startPlc1Comm();
-
-    //restart timer when comm fail event
-    plc1RestartTimer = new QTimer(this);
-    plc1RestartTimer->setInterval( 3000);
-    QObject::connect( plc1RestartTimer, SIGNAL(timeout()), this, SLOT(plc1Restart()));
-
-    connect(plc1Proxy, SIGNAL(readed(QString,QList<u16>)), this, SLOT(readed(QString,QList<u16>)));
-
-    timer1 = new QTimer(this);
-    timer1->setInterval(1000);
-    timer1->setSingleShot(false);
-    QObject::connect( timer1, SIGNAL(timeout()), this, SLOT(timeout()));
-
-    timer1->start();
+    Q_UNUSED(IP)
 
 }
 
 MyQFINS::~MyQFINS()
 {
-    plc1Proxy->stopProxy();
-    delete plc1Proxy; plc1Proxy = nullptr;
+
 }
 
 void MyQFINS::writeData( QString addr, u16 value)
