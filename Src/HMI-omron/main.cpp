@@ -2,7 +2,6 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <mainwindow.h>
 #include "myomron.h"
 
 int main(int argc, char *argv[])
@@ -11,8 +10,6 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-//   MainWindow mainwindow ;
-//    mainwindow.show();
     /*-------------*/
     QQmlApplicationEngine engine;
 
