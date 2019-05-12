@@ -13,8 +13,11 @@ public:
     explicit MyOMRON(QString ip, QObject *parent = nullptr);
     ~MyOMRON();
 
+    AUTO_PROPERTY(bool, isConnected)
+
     ZONE_MEMOIRE("D1", d1)
     ZONE_MEMOIRE("H2.00", h200)
+
 
 
 
@@ -24,11 +27,11 @@ signals:
 public slots:
 
 private slots:
-        void plc1ProxyError(PlcProxy::EplcProxyError error);
-        void plc1Restart();
+    void plc1ProxyError(PlcProxy::EplcProxyError error);
+    void plc1Restart();
 private:
-     PlcProxy                *plc1Proxy;
-     QTimer *plc1RestartTimer;
+    PlcProxy  *plc1Proxy;
+    QTimer *plc1RestartTimer;
 };
 
 #endif // MYOMRON_H

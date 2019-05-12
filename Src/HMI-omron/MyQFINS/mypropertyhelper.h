@@ -60,6 +60,7 @@
     this->metaObject()->method(i).name(),\
     Qt::DirectConnection);\
     }\
+    isConnected(plc1Proxy->plcIsOk());\
     } );\
     _syncTimer->start();\
 
