@@ -54,6 +54,7 @@
     _syncTimer->setSingleShot(false);\
     connect(this, SIGNAL(destroyed(QObject*)), _syncTimer, SLOT(deleteLater()));\
     connect(_syncTimer, &QTimer::timeout, [=]() {\
+    qDebug() << Q_FUNC_INFO << "timeout " ;\
     for(int i = this->metaObject()->methodOffset(); \
     i < this->metaObject()->methodCount(); i++) {\
     if(this->metaObject()->method(i).name().contains("_update")) \
