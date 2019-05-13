@@ -39,7 +39,7 @@ MyOMRON::~MyOMRON()
 
 void MyOMRON::_syncTimerTimeout()
 {
-    qDebug() << Q_FUNC_INFO << "timeout " ;
+    //qDebug() << Q_FUNC_INFO << "timeout " ;
     for(int i = this->metaObject()->methodOffset();
         i < this->metaObject()->methodCount(); i++) {
         if(this->metaObject()->method(i).name().contains("_update"))
@@ -48,6 +48,7 @@ void MyOMRON::_syncTimerTimeout()
                                              Qt::DirectConnection);
     }
     isConnected(plc1Proxy->plcIsOk());
+
 }
 
 void MyOMRON::startPlc1Comm()
@@ -61,7 +62,7 @@ void MyOMRON::startPlc1Comm()
         // TODO : hadi pour sacni un region avec interval du temp
         //plc1Proxy->addRegion("H0",100,200);
         //plc1Proxy->addRegion("H100",100,200);
-        plc1Proxy->addRegion("D0",100,500);
+        //plc1Proxy->addRegion("D0",100,500);
 
         //read all values from PLC
         plc1Proxy->startProxy( true); //force notify - init whole gui

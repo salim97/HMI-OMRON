@@ -33,7 +33,6 @@
     public: \
     int NAME() const { return m_ ## NAME ## _value ; } \
     Q_INVOKABLE void NAME ## _update() {\
-    qDebug() << Q_FUNC_INFO << sender()->metaObject()->className();  \
     NAME( plc1Proxy->readProxyData("D1") ) ;  \
     } \
     void NAME(int value) { \
