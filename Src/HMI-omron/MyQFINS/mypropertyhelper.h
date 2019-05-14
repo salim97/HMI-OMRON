@@ -34,11 +34,11 @@
     int NAME() const { return m_ ## NAME ## _value ; } \
     Q_INVOKABLE void NAME ## _update() {\
     NAME( plc1Proxy->readProxyData("D1") ) ;  \
+    emit NAME ## Changed(value); \
     } \
     void NAME(int value) { \
     if (m_ ## NAME ## _value == value)  return; \
     m_ ## NAME ## _value = value; \
-    emit NAME ## Changed(value); \
     plc1Proxy->writeData( m_ ## NAME ## _address , m_ ## NAME ## _value );\
     } \
     Q_SIGNAL void NAME ## Changed(int value);\
