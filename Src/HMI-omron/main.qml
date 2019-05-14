@@ -11,8 +11,8 @@ Window {
         target: myOMRON
 
         onD1Changed:{
-            spinbox.value = myOMRON.d1
             spinbox.oldvalue = myOMRON.d1
+            spinbox.value = myOMRON.d1
         }
     }
 
