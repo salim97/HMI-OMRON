@@ -29,6 +29,7 @@ Window {
             {
                 myOMRON.d1 = value
                 myOMRON.d1_send()
+                myOMRON.sendALL()
             }
         }
     Button{
@@ -36,7 +37,7 @@ Window {
         anchors.topMargin: 20
         anchors.horizontalCenter: spinbox.horizontalCenter
         text: "refresh"
-        onClicked: myOMRON.readALL()
+        onClicked: myOMRON.d1_read()
     }
 
 
