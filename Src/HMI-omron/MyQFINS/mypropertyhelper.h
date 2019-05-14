@@ -44,7 +44,6 @@
     if (m_ ## NAME ## _value == value)  return; \
     m_ ## NAME ## _value = value; \
     plc1Proxy->writeData( m_ ## NAME ## _address , m_ ## NAME ## _value );\
-    m_ ## NAME ## _value_last_sended = value ;\
     } \
     Q_SIGNAL void NAME ## Changed(int value);\
     private: \
