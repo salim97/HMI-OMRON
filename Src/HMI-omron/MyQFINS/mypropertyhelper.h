@@ -35,7 +35,8 @@
     Q_INVOKABLE void NAME ## _update() {\
     int tmp = plc1Proxy->readProxyData("D1") ; \
     if (m_ ## NAME ## _value != tmp )  emit NAME ## Changed(tmp); \
-    NAME( tmp ) ;  \
+    if (m_ ## NAME ## _value == tmp )  return; \
+    m_ ## NAME ## _value = value; \
     } \
     void NAME(int value) { \
     if (m_ ## NAME ## _value == value)  return; \
