@@ -12,6 +12,7 @@ Window {
 
         onD1Changed:{
             spinbox.value = myOMRON.d1
+            oldvalue = myOMRON.d1
         }
     }
 
@@ -24,7 +25,12 @@ Window {
             from: 0
             to: 999
             stepSize: 1
-            onValueChanged: myOMRON.d1 = value
+            property int oldvalue: 0
+            onValueChanged:
+            {
+                myOMRON.d1 = value
+                value = oldvalue
+            }
         }
 
 
