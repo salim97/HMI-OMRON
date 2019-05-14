@@ -10,7 +10,7 @@ MyOMRON::MyOMRON(QString ip, QObject *parent) : QObject(parent)
 
     //initPlc1WidgetsStructure(); //setup notifiers
     startPlc1Comm();
-   // readALL();
+    QTimer::singleShot(1000, [this]() { qDebug() << "QTIMER CA MARCHE " ; readALL(); } );
 
 
     //restart timer when comm fail event
