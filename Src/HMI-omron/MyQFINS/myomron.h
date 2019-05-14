@@ -25,11 +25,12 @@ public:
 signals:
 
 public slots:
-
+    void readALL();
+    void sendALL();
 private slots:
     void plc1ProxyError(PlcProxy::EplcProxyError error);
     void plc1Restart();
-    void _syncTimerTimeout();
+
 private:
     PlcProxy  *plc1Proxy;
     QTimer *plc1RestartTimer;

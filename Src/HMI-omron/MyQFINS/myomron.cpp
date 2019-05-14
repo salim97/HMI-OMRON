@@ -21,14 +21,14 @@ MyOMRON::MyOMRON(QString ip, QObject *parent) : QObject(parent)
 
 
     //CALL_THIS_IN_CONSTRACTEUR_FOR_ZONE_MEMOIRE_AUTO_UPDATE
-    QTimer *_syncTimer ;
-    _syncTimer = new QTimer(this);
-    _syncTimer->setInterval(100);
-    _syncTimer->setSingleShot(false);
-    connect(this, SIGNAL(destroyed(QObject*)), _syncTimer, SLOT(deleteLater()));
+//    QTimer *_syncTimer ;
+//    _syncTimer = new QTimer(this);
+//    _syncTimer->setInterval(100);
+//    _syncTimer->setSingleShot(false);
+//    connect(this, SIGNAL(destroyed(QObject*)), _syncTimer, SLOT(deleteLater()));
 
-    connect(_syncTimer, SIGNAL(timeout()), this, SLOT(_syncTimerTimeout()));
-    _syncTimer->start();
+//    connect(_syncTimer, SIGNAL(timeout()), this, SLOT(_syncTimerTimeout()));
+//    _syncTimer->start();
 }
 
 MyOMRON::~MyOMRON()
@@ -37,18 +37,29 @@ MyOMRON::~MyOMRON()
     delete plc1Proxy; plc1Proxy = nullptr;
 }
 
-void MyOMRON::_syncTimerTimeout()
+void MyOMRON::readALL()
 {
     //qDebug() << Q_FUNC_INFO << "timeout " ;
     for(int i = this->metaObject()->methodOffset();
         i < this->metaObject()->methodCount(); i++) {
-        if(this->metaObject()->method(i).name().contains("_update"))
+        if(this->metaObject()->method(i).name().contains("_read"))
             this->metaObject()->invokeMethod(this,
                                              this->metaObject()->method(i).name(),
                                              Qt::DirectConnection);
     }
     isConnected(plc1Proxy->plcIsOk());
 
+}
+
+void MyOMRON::sendALL()
+{
+    for(int i = this->metaObject()->methodOffset();
+        i < this->metaObject()->methodCount(); i++) {
+        if(this->metaObject()->method(i).name().contains("_send"))
+            this->metaObject()->invokeMethod(this,
+                                             this->metaObject()->method(i).name(),
+                                             Qt::DirectConnection);
+    }
 }
 
 void MyOMRON::startPlc1Comm()

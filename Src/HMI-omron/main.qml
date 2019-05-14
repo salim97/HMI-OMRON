@@ -12,6 +12,7 @@ Window {
 
         onD1Changed:{
             spinbox.value = myOMRON.d1
+            //??????????
         }
     }
 
@@ -27,9 +28,16 @@ Window {
             onValueChanged:
             {
                 myOMRON.d1 = value
+                myOMRON.d1_send()
             }
         }
-
+    Button{
+        anchors.top: spinbox.bottom
+        anchors.topMargin: 20
+        anchors.horizontalCenter: spinbox.horizontalCenter
+        text: "refresh"
+        onClicked: myOMRON.readALL()
+    }
 
 
         Rectangle {

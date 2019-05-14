@@ -32,18 +32,16 @@
     Q_PROPERTY(int NAME READ NAME WRITE NAME NOTIFY NAME ## Changed ) \
     public: \
     int NAME() const { return m_ ## NAME ## _value ; } \
-    Q_INVOKABLE void NAME ## _update() {\
-    bool status = false ; \
-    int tmp = plc1Proxy->readProxyData(m_ ## NAME ## _address, &status) ; \
-    qDebug() << Q_FUNC_INFO << "value = " << m_ ## NAME ## _value << "tmp= " << tmp  << "status = " << status;\
-    if ( m_ ## NAME ## _value == tmp )  return; \
-    emit NAME ## Changed(tmp); \
-    m_ ## NAME ## _value = tmp; \
+    Q_INVOKABLE void NAME ## _read() {\
+    NAME(plc1Proxy->readProxyData(m_ ## NAME ## _address));\
+    } \
+    Q_INVOKABLE void NAME ## _send() {\
+    plc1Proxy->writeData( m_ ## NAME ## _address , m_ ## NAME ## _value );\
     } \
     void NAME(int value) { \
     if (m_ ## NAME ## _value == value)  return; \
     m_ ## NAME ## _value = value; \
-    plc1Proxy->writeData( m_ ## NAME ## _address , m_ ## NAME ## _value );\
+    emit NAME ## Changed(value); \
     } \
     Q_SIGNAL void NAME ## Changed(int value);\
     private: \
