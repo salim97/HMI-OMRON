@@ -15,8 +15,8 @@ public:
 
     AUTO_PROPERTY(bool, isConnected)
 
-    ZONE_MEMOIRE("H200", d1)
-    ZONE_MEMOIRE("H2.00", h200)
+    ZONE_MEMOIRE("D1", d1)
+    ZONE_MEMOIRE("26.00", h200)
 
 
 

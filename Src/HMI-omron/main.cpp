@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     MyOMRON myOMRON("10.0.0.1");
     engine.rootContext()->setContextProperty("myOMRON", &myOMRON);
 
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

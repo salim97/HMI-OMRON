@@ -58,9 +58,11 @@ Window {
                 anchors.topMargin: 0
                 anchors.fill: parent
 
-                onPressed: {myOMRON.h200 =1
+                onPressed: {myOMRON.h200 = 1
+                    myOMRON.h200_send()
                     manu_marche.color= "green"}
                 onReleased: {myOMRON.h200 =0
+                    myOMRON.h200_send()
                     manu_marche.color= "red"}
             }
 
