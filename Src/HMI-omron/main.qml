@@ -7,6 +7,11 @@ Window {
     width: 640
     height: 480
     title: qsTr("Hello World")
+    Component.onCompleted: {
+        myOMRON.c20400_read() // read value c204.00 from omron
+        myOMRON.readALL() // to read all variables from omron
+    }
+
     Connections{
         target: myOMRON
 
