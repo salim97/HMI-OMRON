@@ -34,7 +34,7 @@ Window {
             {
                 myOMRON.d1 = value
                 myOMRON.d1_send()
-                myOMRON.sendALL()
+
             }
         }
         Button{
