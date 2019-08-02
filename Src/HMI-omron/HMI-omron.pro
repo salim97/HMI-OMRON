@@ -1,4 +1,5 @@
-QT += core gui quick widgets network
+QT += quick qml multimedia multimediawidgets quick quickcontrols2
+
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -16,6 +17,7 @@ SOURCES += main.cpp
 
 RESOURCES += qml.qrc
 
+
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
@@ -24,7 +26,7 @@ QML_DESIGNER_IMPORT_PATH =
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+else: unix:!android: target.path = /home/pi/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
