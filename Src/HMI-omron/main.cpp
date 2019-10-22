@@ -1,15 +1,27 @@
 #include <QGuiApplication>
-#include <QApplication>
+#include <QQmlApplicationEngine>
+#include <QQuickStyle>
+#include <QIcon>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "myomron.h"
+#include <QDebug>
+#include <QtCore>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
     QApplication app(argc, argv);
 
+    //! [style]
+    QQuickStyle::setStyle(QStringLiteral("qrc:/qml/Style"));
+    //! [style]
+
+    //! [icons]
+    QIcon::setThemeName(QStringLiteral("wearable"));
+
+    //! [icons]
     /*-------------*/
     QQmlApplicationEngine engine;
 
@@ -24,5 +36,8 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    return app.exec();
+    int returnval = app.exec();
+
+
+    return returnval;
 }
