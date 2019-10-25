@@ -24,6 +24,8 @@ public:
     ZONE_MEMOIRE("C205.00", c20500)
     ZONE_MEMOIRE("C206.00", c20600)
 
+    ZONE_MEMOIRE("H60.01", h60)
+
 
 
 

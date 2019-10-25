@@ -71,9 +71,13 @@ Item {
             anchors.leftMargin: 0
             anchors.topMargin: 0
             anchors.fill: parent
-            onPressed: {myGPIO.moteur1 =1
+            onPressed: {
+                myOMRON.h60=1
+                myOMRON.h60_send()
                 manu_moteur1.color= "green"}
-            onReleased: {myGPIO.moteur1 =0
+            onReleased: {
+                myOMRON.h60=0
+                myOMRON.h60_send()
                 manu_moteur1.color= "red"}
         }
 
