@@ -35,6 +35,26 @@
     Q_INVOKABLE void NAME ## _read() {\
     NAME(plc1Proxy->readProxyData(m_ ## NAME ## _address));\
     } \
+    Q_INVOKABLE QString NAME ## _toBIN_asSTRING() {\
+    QString s = QString::number(  m_ ## NAME ## _value , 2 );\
+    std::reverse(s.begin(), s.end());\
+    for( int i = s.length() ; s.length() < 16 ; i++ )\
+        s.append("0");\
+    return  s;\
+    } \
+    Q_INVOKABLE QList<bool> NAME ## _toBIN_asBOOL() {\
+    QString s = QString::number(  m_ ## NAME ## _value , 2 );\
+    std::reverse(s.begin(), s.end());\
+    for( int i = s.length() ; s.length() < 16 ; i++ )\
+        s.append("0");\
+    QList<bool> r ;\
+    for( int i = 0 ; i < s.length() ; i++ )\
+        if(s[i] == "0")\
+            r << false ;\
+        else\
+            r << true ; \
+    return  r;\
+    } \
     Q_INVOKABLE void NAME ## _send() {\
     plc1Proxy->writeData( m_ ## NAME ## _address , m_ ## NAME ## _value );\
     } \

@@ -72,9 +72,27 @@ QQC2.ApplicationWindow {
     title: qsTr("Wearable")
     // gestion d'arret d'urgence pour tous les pages
     Component.onCompleted: {
+
+        myOMRON.h60 = 8 ;
+        console.log("myOMRON.h60_toBIN_asBOOL()[0] "+ myOMRON.h60_toBIN_asBOOL()[0]) ;
+        console.log("myOMRON.h60_toBIN_asBOOL()[1] "+ myOMRON.h60_toBIN_asBOOL()[1]) ;
+        console.log("myOMRON.h60_toBIN_asBOOL()[2] "+ myOMRON.h60_toBIN_asBOOL()[2]) ;
+        console.log("myOMRON.h60_toBIN_asBOOL()[3] "+ myOMRON.h60_toBIN_asBOOL()[3]) ;
+        console.log("myOMRON.h60_toBIN_asBOOL()[4] "+ myOMRON.h60_toBIN_asBOOL()[4]) ;
+        console.log("myOMRON.h60_toBIN_asBOOL()[5] "+ myOMRON.h60_toBIN_asBOOL()[5]) ;
+        console.log("===================================================================");
+        console.log("myOMRON.h60_toBIN_asSTRING()[0] "+ myOMRON.h60_toBIN_asSTRING()[0]) ;
+        console.log("myOMRON.h60_toBIN_asSTRING()[1] "+ myOMRON.h60_toBIN_asSTRING()[1]) ;
+        console.log("myOMRON.h60_toBIN_asSTRING()[2] "+ myOMRON.h60_toBIN_asSTRING()[2]) ;
+        console.log("myOMRON.h60_toBIN_asSTRING()[3] "+ myOMRON.h60_toBIN_asSTRING()[3]) ;
+        console.log("myOMRON.h60_toBIN_asSTRING()[4] "+ myOMRON.h60_toBIN_asSTRING()[4]) ;
+        console.log("myOMRON.h60_toBIN_asSTRING()[5] "+ myOMRON.h60_toBIN_asSTRING()[5]) ;
+        console.log("===================================================================");
+
         myOMRON.c20400_read() // read value c204.00 from omron
         myOMRON.readALL() // to read all variables from omron
     }
+
 
     Connections{
         target: myOMRON
