@@ -29,12 +29,12 @@ Item {
                 text: qsTr("Etiq")
                 hoverEnabled: true
                 enabled: true
-                property bool test: switchEtiq.checked
-                checked: test
+                //property bool test: switchEtiq.checked
+                checked: myOMRON.h0_toBIN_asBOOL()[6]
 
 
                 onCheckedChanged:
-                if(test==false)
+                if(switchEtiq.checked==false)
                 { myOMRON.h0 = Math.pow(2,6)
                     myOMRON.h0_send()}
                 else
