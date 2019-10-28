@@ -15,20 +15,10 @@ Item {
 
         anchors.fill: parent
 
+
         Item {
             id: settingsPage1
             visible: true
-
-
-
-//            Rectangle{
-//                 id:marhe
-//                 x: 770
-//                 y: 40
-//                 width: 30
-//                 height: 30
-//                 color: grafcet.HMarche == true ? "green" : "red"
-//             }
 
 
 
@@ -39,10 +29,18 @@ Item {
                 text: qsTr("Etiq")
                 hoverEnabled: true
                 enabled: true
-                //property bool checkeEtiq: switchEtiq.checked
-                //checked: checkeEtiq == true ? grafcet.HEtiq =1 : grafcet.HEtiq=0
-                checked: grafcet.HEtiq
-                onCheckedChanged: grafcet.HEtiq = checked
+                property bool test: switchEtiq.checked
+                checked: test
+
+
+                onCheckedChanged:
+                if(test==false)
+                { myOMRON.h0 = Math.pow(2,6)
+                    myOMRON.h0_send()}
+                else
+                { myOMRON.h0 = 0
+                    myOMRON.h0_send()}
+
             }
 
 
@@ -204,6 +202,7 @@ Item {
 
 
    }
+
 
     PageIndicator {
         y: 412

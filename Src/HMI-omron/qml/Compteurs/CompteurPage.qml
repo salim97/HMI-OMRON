@@ -5,7 +5,6 @@ import QtQuick.Controls 2.0 as QQ2
 import QtQuick.Controls 1.4
 
 
-
 Item {
 
 
@@ -72,7 +71,7 @@ Item {
             anchors.topMargin: 0
             anchors.fill: parent
             onPressed: {
-                myOMRON.h60=1
+                myOMRON.h60= Math.pow()
                 myOMRON.h60_send()
                 manu_moteur1.color= "green"}
             onReleased: {

@@ -15,20 +15,39 @@ public:
 
     AUTO_PROPERTY(bool, isConnected)
 
-    ZONE_MEMOIRE("D1", d1)
-    ZONE_MEMOIRE("C200.00", c20000)
-    ZONE_MEMOIRE("C201.00", c20100)
-    ZONE_MEMOIRE("C202.00", c20200)
-    ZONE_MEMOIRE("C203.00", c20300)
-    ZONE_MEMOIRE("C204.00", c20400)
-    ZONE_MEMOIRE("C205.00", c20500)
-    ZONE_MEMOIRE("C206.00", c20600)
-
-    ZONE_MEMOIRE("H60.01", h60)
 
 
+    ZONE_MEMOIRE("H0", h0)
+    // Valid Etiq          h0.06
+    // valid Co etiq       h0.04
+    // valid etiq co etiq  h0.07
+    // valid rep etiq      h0.03
+    // valid rep cran      h0.09
+    // valid plaquer       h0.05
+
+    ZONE_MEMOIRE("C16", c16)
+    // marche 16.13
+
+    ZONE_MEMOIRE("D100", d100) // départ etiq
+    ZONE_MEMOIRE("D101", d101) // départ co etiq
+    ZONE_MEMOIRE("D102", d102) // départ etiq co etiq
+    ZONE_MEMOIRE("D103", d103) // arret etiq
+    ZONE_MEMOIRE("D104", d104) // arret co etiq
+    ZONE_MEMOIRE("D105", d105) // arret etiq co etiq
+
+    ZONE_MEMOIRE("D2", d2)     // plaquage
+    ZONE_MEMOIRE("D3", d3)     // secu echenillage
+    ZONE_MEMOIRE("D4", d4)     // secu etiq co etiq
+    ZONE_MEMOIRE("D5", d5)     // rotation
+    ZONE_MEMOIRE("D6", d6)     // lissage
+    ZONE_MEMOIRE("D7", d7)     // secu reperage
 
 
+
+
+
+
+    void bit();
 
     void startPlc1Comm();
 signals:
@@ -36,6 +55,7 @@ signals:
 public slots:
     void readALL();
     void sendALL();
+
 private slots:
     void plc1ProxyError(PlcProxy::EplcProxyError error);
     void plc1Restart();

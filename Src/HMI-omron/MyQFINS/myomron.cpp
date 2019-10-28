@@ -1,4 +1,5 @@
 #include "myomron.h"
+#include "math.h"
 
 MyOMRON::MyOMRON(QString ip, QObject *parent) : QObject(parent)
 {
@@ -38,6 +39,11 @@ MyOMRON::~MyOMRON()
     delete plc1Proxy; plc1Proxy = nullptr;
 }
 
+void MyOMRON::bit()
+{
+    pow(2,2);
+}
+
 void MyOMRON::readALL()
 {
     //qDebug() << Q_FUNC_INFO << "timeout " ;
@@ -52,6 +58,7 @@ void MyOMRON::readALL()
 
 }
 
+
 void MyOMRON::sendALL()
 {
     for(int i = this->metaObject()->methodOffset();
@@ -62,6 +69,7 @@ void MyOMRON::sendALL()
                                              Qt::DirectConnection);
     }
 }
+
 
 void MyOMRON::startPlc1Comm()
 {
