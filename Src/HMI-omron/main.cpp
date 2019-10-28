@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     MyOMRON myOMRON("10.0.0.1");
+    myOMRON.readALL();
     engine.rootContext()->setContextProperty("myOMRON", &myOMRON);
 
 
