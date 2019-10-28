@@ -15,6 +15,13 @@ Item {
 
         anchors.fill: parent
 
+        Component.onCompleted: {
+            console.log("==================================================================");
+            console.log("myOMRON.h0_toBIN_asBOOL() = ");
+            console.log(myOMRON.h0_toBIN_asSTRING());
+            console.log("==================================================================");
+
+        }
 
         Item {
             id: settingsPage1
