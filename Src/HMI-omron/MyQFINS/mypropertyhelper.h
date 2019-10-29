@@ -136,7 +136,7 @@ for(int i = this->metaObject()->methodOffset(); \
 #define CALL_THIS_IN_CONSTRACTEUR_FOR_ZONE_MEMOIRE_AUTO_UPDATE \
     QTimer *_syncTimer ;\
     _syncTimer = new QTimer(this);\
-    _syncTimer->setInterval(100);\
+    _syncTimer->setInterval(500);\
     _syncTimer->setSingleShot(false);\
     connect(this, SIGNAL(destroyed(QObject*)), _syncTimer, SLOT(deleteLater()));\
     connect(_syncTimer, &QTimer::timeout, [=]() {\
