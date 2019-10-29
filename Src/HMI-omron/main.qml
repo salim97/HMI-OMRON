@@ -195,7 +195,7 @@ Window {
     height: 480
     title: qsTr("Hello World")
     Component.onCompleted: {
-//        myOMRON.readALL() // to read all variables from omron
+        myOMRON.readALL() // to read all variables from omron
 
     }
 

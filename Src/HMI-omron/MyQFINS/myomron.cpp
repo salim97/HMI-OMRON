@@ -10,7 +10,7 @@ MyOMRON::MyOMRON(QString ip, QObject *parent) : QObject(parent)
     QObject::connect( plc1Proxy, SIGNAL(error(PlcProxy::EplcProxyError)), this, SLOT(plc1ProxyError(PlcProxy::EplcProxyError)));
     //initPlc1WidgetsStructure(); //setup notifiers
     startPlc1Comm();
-//    QTimer::singleShot(1000, [this]() { qDebug() << "QTIMER CA MARCHE " ; readALL(); } );
+    QTimer::singleShot(1000, [this]() { qDebug() << "QTIMER CA MARCHE " ; readALL(); } );
 
 
     //restart timer when comm fail event
