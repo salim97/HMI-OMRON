@@ -204,8 +204,18 @@ Window {
 
         onD1Changed:{
             spinbox.value = myOMRON.d1
-            //??????????
         }
+
+        onH0Changed:{
+//            line 215 et 216 kifkif, c'est une facone d'ecrire, math.pow(2,2) hiya position 2 donc h0_toBIN_asBOOL()[2] soit true soit false ,donc 1 wla 0
+            //if(myOMRON.h0_toBIN_asBOOL()[2] == Math.pow(2,2))
+            if(myOMRON.h0_toBIN_asBOOL()[2])
+                manu_marche.color= "green"
+            else
+                manu_marche.color= "red"
+        }
+
+
     }
 
     Item {
@@ -228,13 +238,13 @@ Window {
             anchors.top: spinbox.bottom
             anchors.topMargin: 20
             anchors.horizontalCenter: spinbox.horizontalCenter
-            text: "refresh"
-            onClicked: myOMRON.d1_read()
+            text: "refresh D1"
+            onClicked:
+            {
+                myOMRON.h0_read()
+                myOMRON.d1_read()
+            }
         }
-
-
-
-
     }
 
     Rectangle {
@@ -256,14 +266,14 @@ Window {
 
             onPressed: {
                 myOMRON.h0= Math.pow(2,2)
-
-
-
                 myOMRON.h0_send()
-                manu_marche.color= "green"}
-            onReleased: {myOMRON.h0 =0
+                manu_marche.color= "green"
+            }
+            onReleased: {
+                myOMRON.h0 =0
                 myOMRON.h0_send()
-                manu_marche.color= "red"}
+                manu_marche.color= "red"
+            }
 
         }
 
