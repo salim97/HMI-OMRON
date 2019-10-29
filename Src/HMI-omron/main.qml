@@ -195,7 +195,7 @@ Window {
     height: 480
     title: qsTr("Hello World")
     Component.onCompleted: {
-        myOMRON.readALL() // to read all variables from omron
+//        myOMRON.readALL() // to read all variables from omron
 
     }
 
@@ -222,11 +222,14 @@ Window {
 
     }
 
+
     Item {
         anchors.fill: parent
 
         SpinBox{
             id: spinbox
+            anchors.verticalCenterOffset: -170
+            anchors.horizontalCenterOffset: -9
             anchors.centerIn: parent
             from: 0
             to: 999
@@ -249,7 +252,89 @@ Window {
                 myOMRON.d1_read()
             }
         }
+
+        Switch {
+            id: switch0
+            x: 38
+            y: 201
+            text: qsTr("Switch bit 0")
+            property int bitPos: 0
+            checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
+            onCheckedChanged: {
+                if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
+                    return ;
+                if(checked)
+                    myOMRON.h0 += Math.pow(2,bitPos);
+                else
+                    myOMRON.h0 -= Math.pow(2,bitPos);
+            }
+        }
+
+        Switch {
+            id: switch1
+            x: 38
+            y: 264
+            text: qsTr("Switch bit 1")
+            property int bitPos: 1
+            checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
+            onCheckedChanged: {
+                if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
+                    return ;
+                if(checked)
+                    myOMRON.h0 += Math.pow(2,bitPos);
+                else
+                    myOMRON.h0 -= Math.pow(2,bitPos);
+            }
+        }
+
+        Switch {
+            id: switch2
+            x: 38
+            y: 322
+            text: qsTr("Switch bit 2")
+            property int bitPos: 2
+            checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
+            onCheckedChanged: {
+                if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
+                    return ;
+                if(checked)
+                    myOMRON.h0 += Math.pow(2,bitPos);
+                else
+                    myOMRON.h0 -= Math.pow(2,bitPos);
+            }
+        }
+
+        Switch {
+            id: switch3
+            x: 38
+            y: 383
+            text: qsTr("Switch bit 3")
+            property int bitPos: 3
+            checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
+            onCheckedChanged: {
+                if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
+                    return ;
+                if(checked)
+                    myOMRON.h0 += Math.pow(2,bitPos);
+                else
+                    myOMRON.h0 -= Math.pow(2,bitPos);
+            }
+        }
+
+        Button {
+            id: buttonH0
+            x: 343
+            y: 246
+            width: 180
+            height: 40
+            text: qsTr("Button")
+            onClicked: {
+                text = myOMRON.h0_toBIN_asSTRING()
+                console.log( myOMRON.h0)
+            }
+        }
     }
+
 
     Rectangle {
         id: manu_marche
@@ -282,6 +367,8 @@ Window {
         }
 
     }
+
+
 
 
 }

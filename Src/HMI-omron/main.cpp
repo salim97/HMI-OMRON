@@ -25,6 +25,9 @@ int main(int argc, char *argv[])
     /*-------------*/
     QQmlApplicationEngine engine;
 
+//    QSettings settings("myapp.ini", QSettings::IniFormat );
+//    qDebug() << "QSettings settings(myapp.ini, QSettings::IniFormat );" << settings.fileName();
+
     MyOMRON myOMRON("10.0.0.1");
 
     engine.rootContext()->setContextProperty("myOMRON", &myOMRON);
