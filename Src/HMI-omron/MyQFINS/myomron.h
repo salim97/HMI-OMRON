@@ -15,10 +15,10 @@ public:
 
     AUTO_PROPERTY(bool, isConnected)
 
-    ZONE_MEMOIRE("D1", d1)     // plaquage
+    ZONE_MEMOIRE("D1", d1)     // hadi mat sauvgardich ...
 
+    ZONE_MEMOIRE_SETTINGS("H0", h0) // hadi t sauvgarde l'etat in local storage
 
-    ZONE_MEMOIRE_SETTINGS("H0", h0)
     // Valid Etiq          h0.06
     // valid Co etiq       h0.04
     // valid etiq co etiq  h0.07
