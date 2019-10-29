@@ -39,7 +39,7 @@ for(int i = this->metaObject()->methodOffset(); \
                                          Qt::DirectConnection);\
 }\
 
-#define ZONE_MEMOIRE(ADDRESS, NAME) \
+#define ZONE_MEMOIRE_SETTINGS(ADDRESS, NAME) \
     Q_PROPERTY(int NAME READ NAME WRITE NAME NOTIFY NAME ## Changed ) \
     public: \
     int NAME() const { return m_ ## NAME ## _value ; } \
@@ -76,7 +76,7 @@ for(int i = this->metaObject()->methodOffset(); \
         func_name = func_name.split("::")[1];\
         func_name.remove(0, 4 );\
         QSettings settings("myapp.ini", QSettings ::IniFormat );\
-        m_ ## NAME ## _value = qvariant_cast<int>(settings.value(func_name));     \
+        NAME( qvariant_cast<int>(settings.value(func_name)) ) ;     \
     }\
     void NAME(int value) { \
     if (m_ ## NAME ## _value == value)  return; \
@@ -93,7 +93,7 @@ for(int i = this->metaObject()->methodOffset(); \
     int m_ ## NAME ## _value; \
     QString m_ ## NAME ## _address = ADDRESS ;
 
-#define ZONE_MEMOIRE_SETTINGS(ADDRESS, NAME) \
+#define ZONE_MEMOIRE(ADDRESS, NAME) \
     Q_PROPERTY(int NAME READ NAME WRITE NAME NOTIFY NAME ## Changed ) \
     public: \
     int NAME() const { return m_ ## NAME ## _value ; } \
