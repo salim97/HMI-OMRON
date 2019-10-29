@@ -267,6 +267,7 @@ Window {
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
+                 myOMRON.h0_send()
             }
         }
 
@@ -284,6 +285,7 @@ Window {
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
+                 myOMRON.h0_send()
             }
         }
 
@@ -301,6 +303,7 @@ Window {
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
+                 myOMRON.h0_send()
             }
         }
 
@@ -318,6 +321,7 @@ Window {
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
+                myOMRON.h0_send()
             }
         }
 
