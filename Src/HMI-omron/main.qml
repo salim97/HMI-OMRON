@@ -209,6 +209,8 @@ Window {
         onH0Changed:{
 //            line 215 et 216 kifkif, c'est une facone d'ecrire, math.pow(2,2) hiya position 2 donc h0_toBIN_asBOOL()[2] soit true soit false ,donc 1 wla 0
             //if(myOMRON.h0_toBIN_asBOOL()[2] == Math.pow(2,2))
+            console.log("========================================================");
+            console.log(myOMRON.h0_toBIN_asSTRING())
             if(myOMRON.h0_toBIN_asBOOL()[2])
                 manu_marche.color= "green"
             else
