@@ -23,7 +23,7 @@ MyOMRON::MyOMRON(QString ip, QObject *parent) : QObject(parent)
 
     CALL_THIS_IN_CONSTRACTEUR_FOR_AUTO_PROPERTY_SETTINGS
 
-    //CALL_THIS_IN_CONSTRACTEUR_FOR_ZONE_MEMOIRE_AUTO_UPDATE
+    CALL_THIS_IN_CONSTRACTEUR_FOR_ZONE_MEMOIRE_AUTO_UPDATE
 //    QTimer *_syncTimer ;
 //    _syncTimer = new QTimer(this);
 //    _syncTimer->setInterval(100);
