@@ -15,6 +15,7 @@ public:
 
     AUTO_PROPERTY(bool, isConnected)
 
+    ZONE_MEMOIRE("D1", d1)     // plaquage
 
 
     ZONE_MEMOIRE("H0", h0)
