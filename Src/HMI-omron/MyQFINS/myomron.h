@@ -18,7 +18,7 @@ public:
     ZONE_MEMOIRE("D1", d1)     // plaquage
 
 
-    ZONE_MEMOIRE("H0", h0)
+    ZONE_MEMOIRE_SETTINGS("H0", h0)
     // Valid Etiq          h0.06
     // valid Co etiq       h0.04
     // valid etiq co etiq  h0.07

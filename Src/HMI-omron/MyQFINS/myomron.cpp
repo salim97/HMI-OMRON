@@ -21,6 +21,7 @@ MyOMRON::MyOMRON(QString ip, QObject *parent) : QObject(parent)
     //connect(plc1Proxy, SIGNAL(readed(QString,QList<u16>)), this, SLOT(readed(QString,QList<u16>)));
 
 
+    CALL_THIS_IN_CONSTRACTEUR_FOR_AUTO_PROPERTY_SETTINGS
 
     //CALL_THIS_IN_CONSTRACTEUR_FOR_ZONE_MEMOIRE_AUTO_UPDATE
 //    QTimer *_syncTimer ;

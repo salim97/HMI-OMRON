@@ -6,6 +6,7 @@
 #include <QString>
 #include <QTimer>
 #include <QMetaMethod>
+#include <QSettings>
 
 #define AUTO_PROPERTY(TYPE, NAME) \
     Q_PROPERTY(TYPE NAME READ NAME WRITE NAME NOTIFY NAME ## Changed ) \
@@ -28,7 +29,71 @@
     void NAME(TYPE value) {m_ ## NAME = value; } \
     TYPE m_ ## NAME;
 
+#define CALL_THIS_IN_CONSTRACTEUR_FOR_AUTO_PROPERTY_SETTINGS \
+for(int i = this->metaObject()->methodOffset(); \
+    i < this->metaObject()->methodCount(); i++) \
+{ \
+    if(this->metaObject()->method(i).name().contains("init")) \
+        this->metaObject()->invokeMethod(this, \
+                                         this->metaObject()->method(i).name(),\
+                                         Qt::DirectConnection);\
+}\
+
 #define ZONE_MEMOIRE(ADDRESS, NAME) \
+    Q_PROPERTY(int NAME READ NAME WRITE NAME NOTIFY NAME ## Changed ) \
+    public: \
+    int NAME() const { return m_ ## NAME ## _value ; } \
+    Q_INVOKABLE void NAME ## _read() {\
+    NAME(plc1Proxy->readProxyData(m_ ## NAME ## _address));\
+    } \
+    Q_INVOKABLE QString NAME ## _toBIN_asSTRING() {\
+    QString s = QString::number(  m_ ## NAME ## _value , 2 );\
+    std::reverse(s.begin(), s.end());\
+    for( int i = s.length() ; s.length() < 16 ; i++ )\
+        s.append("0");\
+    return  s;\
+    } \
+    Q_INVOKABLE QList<bool> NAME ## _toBIN_asBOOL() {\
+    QString s = QString::number(  m_ ## NAME ## _value , 2 );\
+    std::reverse(s.begin(), s.end());\
+    for( int i = s.length() ; s.length() < 16 ; i++ )\
+        s.append("0");\
+    QList<bool> r ;\
+    for( int i = 0 ; i < s.length() ; i++ )\
+        if(s[i] == "0")\
+            r << false ;\
+        else\
+            r << true ; \
+    return  r;\
+    } \
+    Q_INVOKABLE void NAME ## _send() {\
+    plc1Proxy->writeData( m_ ## NAME ## _address , m_ ## NAME ## _value );\
+    } \
+    Q_INVOKABLE void init ## NAME() \
+    {\
+        QString func_name = Q_FUNC_INFO;\
+        func_name = func_name.split("(")[0];\
+        func_name = func_name.split("::")[1];\
+        func_name.remove(0, 4 );\
+        QSettings settings("myapp.ini", QSettings ::IniFormat );\
+        m_ ## NAME ## _value = qvariant_cast<int>(settings.value(func_name));     \
+    }\
+    void NAME(int value) { \
+    if (m_ ## NAME ## _value == value)  return; \
+    QString func_name = Q_FUNC_INFO;\
+    func_name = func_name.split("(")[0];\
+    func_name = func_name.split("::")[1];\
+    QSettings settings("myapp.ini", QSettings::IniFormat );\
+    settings.setValue(func_name , value  );\
+    m_ ## NAME ## _value = value; \
+    emit NAME ## Changed(value); \
+    } \
+    Q_SIGNAL void NAME ## Changed(int value);\
+    private: \
+    int m_ ## NAME ## _value; \
+    QString m_ ## NAME ## _address = ADDRESS ;
+
+#define ZONE_MEMOIRE_SETTINGS(ADDRESS, NAME) \
     Q_PROPERTY(int NAME READ NAME WRITE NAME NOTIFY NAME ## Changed ) \
     public: \
     int NAME() const { return m_ ## NAME ## _value ; } \
