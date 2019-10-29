@@ -204,7 +204,7 @@ Window {
 
         onD1Changed:{
             console.log("========================== onD1Changed ==============================");
-            console.log(myOMRON.d1())
+            console.log(myOMRON.d1)
             spinbox.value = myOMRON.d1
         }
 
