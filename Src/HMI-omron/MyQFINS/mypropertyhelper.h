@@ -143,7 +143,7 @@ for(int i = this->metaObject()->methodOffset(); \
     qDebug() << Q_FUNC_INFO << "timeout " ;\
     for(int i = this->metaObject()->methodOffset(); \
     i < this->metaObject()->methodCount(); i++) {\
-    if(this->metaObject()->method(i).name().contains("_update")) \
+    if(this->metaObject()->method(i).name().contains("_read")) \
     this->metaObject()->invokeMethod(this, \
     this->metaObject()->method(i).name(),\
     Qt::DirectConnection);\
