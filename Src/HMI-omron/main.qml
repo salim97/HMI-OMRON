@@ -261,13 +261,13 @@ Window {
             property int bitPos: 0
             checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
             onCheckedChanged: {
+                 myOMRON.h0_send()
                 if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
                     return ;
                 if(checked)
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
-                 myOMRON.h0_send()
             }
         }
 
@@ -279,13 +279,13 @@ Window {
             property int bitPos: 1
             checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
             onCheckedChanged: {
+                 myOMRON.h0_send()
                 if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
                     return ;
                 if(checked)
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
-                 myOMRON.h0_send()
             }
         }
 
@@ -297,13 +297,14 @@ Window {
             property int bitPos: 2
             checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
             onCheckedChanged: {
+                 myOMRON.h0_send()
                 if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
                     return ;
                 if(checked)
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
-                 myOMRON.h0_send()
+
             }
         }
 
@@ -315,13 +316,14 @@ Window {
             property int bitPos: 3
             checked: myOMRON.h0_toBIN_asBOOL()[bitPos]
             onCheckedChanged: {
+                myOMRON.h0_send()
                 if(myOMRON.h0_toBIN_asBOOL()[bitPos] && checked == true)
                     return ;
                 if(checked)
                     myOMRON.h0 += Math.pow(2,bitPos);
                 else
                     myOMRON.h0 -= Math.pow(2,bitPos);
-                myOMRON.h0_send()
+
             }
         }
 
